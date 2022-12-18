@@ -1,0 +1,132 @@
+@import '../abstracts/variables';
+
+@mixin animacion {
+    animation-name: movida;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+}
+
+.animacion {
+    background: transparent;
+    @include animacion;
+    animation-iteration-count: infinite;
+    width: 10px;
+    height: 10px;
+    border-top: 50px solid $color-blanco;
+    border-left: 50px solid $color-blanco;
+    border-right: 50px solid $color-blanco;
+    border-bottom: 50px solid $color-blanco;
+}
+
+@keyframes movida {
+    0% {
+        border-top: 50px solid transparent;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 50px solid transparent;
+    }
+
+    25% {
+        border-top: 50px solid $color-blanco;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 50px solid transparent;
+    }
+
+    50% {
+        border-top: 50px solid $color-blanco;
+        border-left: 50px solid $color-blanco;
+        border-right: 50px solid transparent;
+        border-bottom: 50px solid transparent;
+    }
+
+    75% {
+        border-top: 50px solid $color-blanco;
+        border-left: 50px solid $color-blanco;
+        border-right: 50px solid transparent;
+        border-bottom: 50px solid $color-blanco
+    }
+
+    100% {
+        border-top: 50px solid $color-blanco;
+        border-left: 50px solid $color-blanco;
+        border-right: 50px solid $color-blanco;
+        border-bottom: 50px solid $color-blanco;
+    }
+}
+
+@mixin lineaColor {
+    height: 100%;
+    width: 1px;
+    position: absolute;
+    background-color: $color-azulOscuro;
+}
+
+@mixin recorrerLinea {
+    content: "";
+    position: absolute;
+    width: 10px;
+    border-radius: 100%;
+    height: 10px;
+    border-radius: 100%;
+    background-color: $color-azulClaro;
+    left: -4px;
+    z-index: 1;
+    bottom: 101%;
+}
+
+@mixin animacionLineas {
+    animation-name: recorre;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.containerLineas {
+    height: 84vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.containerLineas div:nth-child(1) {
+    @include lineaColor;
+    left: 25%;
+}
+
+.containerLineas div:nth-child(1)::after {
+    @include recorrerLinea;
+    @include animacionLineas();
+    animation-duration: 4s;
+}
+
+.containerLineas div:nth-child(2) {
+    @include lineaColor;
+    left: 50%;
+}
+
+.containerLineas div:nth-child(2)::after {
+    @include recorrerLinea;
+    @include animacionLineas();
+    animation-duration: 5s;
+}
+
+.containerLineas div:nth-child(3) {
+    @include lineaColor;
+    left: 75%;
+}
+
+.containerLineas div:nth-child(3)::after {
+    @include recorrerLinea;
+    @include animacionLineas();
+    animation-duration: 6s;
+}
+
+@keyframes recorre {
+    0% {
+        bottom: 101%;
+    }
+
+    100% {
+        bottom: -5%;
+    }
+}

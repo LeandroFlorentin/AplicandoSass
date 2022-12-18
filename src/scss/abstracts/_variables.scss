@@ -1,0 +1,11 @@
+$color-negro : #000000;
+$color-blanco : #CBCCFF;
+$color-azulClaro: #9296F0;
+$color-azulOscuro: #5B63B7;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: $color-negro;
+}
